@@ -15,7 +15,9 @@
 #include "stdint.h"
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // -------------------- Public definitions --------------------
 
@@ -59,7 +61,9 @@ uint32_t BUF_get_free_size(buf_handle_t *buf_handle);
 
 void BUF_demo(void);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* INCLUDE_BUF_H_ */

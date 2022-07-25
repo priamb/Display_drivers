@@ -8,7 +8,9 @@
 #ifndef INCLUDE_PERIODIC_SERVICES_H_
 #define INCLUDE_PERIODIC_SERVICES_H_
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 // Pri implementaciji sistemskih funkcij za delo s tipkovnico bomo potrebovali sledeče nizko-nivojske funkcije:
@@ -31,6 +33,8 @@ void PSERV_run_services_Callback(void);
 void KBD_demo_toggle_LEDs_if_buttons_pressed(void);
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INCLUDE_PERIODIC_SERVICES_H_ */

@@ -3,7 +3,9 @@
 //! @author  nbert, februar-marec 2022
 #ifndef LCD_H_
 #define LCD_H_
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // LCD modul združuje vse preostale module, ki implementirajo
 // polno uporabnost LCD zaslona in jo nadgradijo z grafično knjižnico:
@@ -61,8 +63,11 @@ void LCD_demo_simple();
 
 void LCD_uGUI_init(void);
 void LCD_uGUI_demo_Misko3(void);
+void LCD_ShowRectangle(void);
 
 void LCD_TCH_demo(void);
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif /* LCD_H_ */

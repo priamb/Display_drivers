@@ -18,7 +18,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include <main.hpp>
 #include "stm32g4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -219,16 +219,16 @@ void USART3_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_IRQn 0 */
 
-    // Kot Å¾e reÄ?eno, je potrebno znotraj prekinitvene rutine ugotoviti, kateri od specifiÄ?nih
+    // Kot Å¾e reï¿½?eno, je potrebno znotraj prekinitvene rutine ugotoviti, kateri od specifiï¿½?nih
     // prekinitvenih dogodkov je sproÅ¾il globalno USART3 prekinitev in se potem ustrezno odzvati
     // na ta prekinitveni dogodek s "callback funkcijo".
 
-    // Vir prekinitve ugotavljamo s pomoÄ?jo prekinitveno-statusnega registra USART vmesnika
-    // ob pomoÄ?i LL funkcij.
+    // Vir prekinitve ugotavljamo s pomoï¿½?jo prekinitveno-statusnega registra USART vmesnika
+    // ob pomoï¿½?i LL funkcij.
 
-    // Nujno pa je tudi, da preden se odzovemo na specifiÄ?ni vir prekinitve, preverimo,
-    // Ä?e je ta specifiÄ?na prekinitev sploh omogoÄ?ena. ÄŒe tega ne bi storili, tvegamo,
-    // da se na prekinitveni dogodek odzovemo z napaÄ?no prekinitveno "callback" rutino.
+    // Nujno pa je tudi, da preden se odzovemo na specifiï¿½?ni vir prekinitve, preverimo,
+    // ï¿½?e je ta specifiï¿½?na prekinitev sploh omogoï¿½?ena. ÄŒe tega ne bi storili, tvegamo,
+    // da se na prekinitveni dogodek odzovemo z napaï¿½?no prekinitveno "callback" rutino.
 
 
 
@@ -237,13 +237,13 @@ void USART3_IRQHandler(void)
     // ------ Odzivanje na novo-sprejeti podatek (zastavica RXNE = Receive data register not empty) -------
 
 
-        // Najprej preverimo, Ä?e je ta specifiÄ?na prekinitev sploh omogoÄ?ena. Uporabimo LL funkcijo.
-        if( LL_USART_IsEnabledIT_RXNE_RXFNE (USART3) )      // sploh omogoÄ?ena prekinitev ob RXNE?
+        // Najprej preverimo, ï¿½?e je ta specifiï¿½?na prekinitev sploh omogoï¿½?ena. Uporabimo LL funkcijo.
+        if( LL_USART_IsEnabledIT_RXNE_RXFNE (USART3) )      // sploh omogoï¿½?ena prekinitev ob RXNE?
         {
-            // ÄŒe je prekinitev omogoÄ?ena, potem preverimo Å¡e, Ä?e je postavljena ustrezna zastavica.
+            // ÄŒe je prekinitev omogoï¿½?ena, potem preverimo Å¡e, ï¿½?e je postavljena ustrezna zastavica.
             if( LL_USART_IsActiveFlag_RXNE_RXFNE (USART3) )  // postavljena zastavica RXNE?
             {
-                // ÄŒe je ta specifiÄ?na prekinitev omogoÄ?ena in Ä?e je postavljena zastavica tega specifiÄ?nega
+                // ÄŒe je ta specifiï¿½?na prekinitev omogoï¿½?ena in ï¿½?e je postavljena zastavica tega specifiï¿½?nega
                 // prekinitvenega dogodka, potem se odzovemo s klicem ustrezne "callback" rutine.
 
                 SCI_receive_char_Callback();
@@ -257,13 +257,13 @@ void USART3_IRQHandler(void)
 
     // ------ Odzivanje na sprostitev oddajnega podatkovnega registra TDR (zastavica TXE = Transmitter Empty) -------
 
-        // Najprej preverimo, Ä?e je ta specifiÄ?na prekinitev sploh omogoÄ?ena. Uporabimo LL funkcijo.
-        if( LL_USART_IsEnabledIT_TXE_TXFNF (USART3) )      // sploh omogoÄ?ena prekinitev ob TXE?
+        // Najprej preverimo, ï¿½?e je ta specifiï¿½?na prekinitev sploh omogoï¿½?ena. Uporabimo LL funkcijo.
+        if( LL_USART_IsEnabledIT_TXE_TXFNF (USART3) )      // sploh omogoï¿½?ena prekinitev ob TXE?
         {
-            // ÄŒe je prekinitev omogoÄ?ena, potem preverimo Å¡e, Ä?e je postavljena ustrezna zastavica.
+            // ÄŒe je prekinitev omogoï¿½?ena, potem preverimo Å¡e, ï¿½?e je postavljena ustrezna zastavica.
             if( LL_USART_IsActiveFlag_TXE_TXFNF (USART3) )      // postavljena zastavica TXE?
             {
-                // ÄŒe je ta specifiÄ?na prekinitev omogoÄ?ena in Ä?e je postavljena zastavica tega specifiÄ?nega
+                // ÄŒe je ta specifiï¿½?na prekinitev omogoï¿½?ena in ï¿½?e je postavljena zastavica tega specifiï¿½?nega
                 // prekinitvenega dogodka, potem se odzovemo s klicem ustrezne "callback" rutine.
 
                 SCI_transmit_char_Callback();

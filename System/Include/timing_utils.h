@@ -9,7 +9,9 @@
 #ifndef INCLUDE_TIMING_UTILS_H_
 #define INCLUDE_TIMING_UTILS_H_
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // Pri implementaciji modula z orodji za merjenje časa bomo potrebovali sledeče HAL funkcije:
 //
@@ -59,6 +61,8 @@ uint8_t TIMUT_stopwatch_has_another_X_ms_passed(stopwatch_handle_t *stopwatch, u
 void TIMUT_stopwatch_demo(void);
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INCLUDE_TIMING_UTILS_H_ */

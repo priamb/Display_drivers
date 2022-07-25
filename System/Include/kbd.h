@@ -7,7 +7,9 @@
 
 #ifndef INCLUDE_KBD_H_
 #define INCLUDE_KBD_H_
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 // ----------- Include other modules (for public) -------------
@@ -68,6 +70,8 @@ button_sig_value_t KBD_get_button_state(buttons_enum_t button);
 
 
 void KBD_demo(void);
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INCLUDE_KBD_H_ */

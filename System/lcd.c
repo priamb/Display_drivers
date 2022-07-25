@@ -214,7 +214,11 @@ void LCD_uGUI_init(void)
 
 // ------------------ Testne demo funkcije ----------------
 
-
+void LCD_ShowRectangle(void)
+{
+	UG_FillScreen(C_BLACK);
+	LCD_FillRect(50, 50, 250, 250, 0xF800);
+}
 
 // Demonstracija izrisa grafike na zalon s pomočjo uGUI knjižnice.
 void LCD_uGUI_demo_Misko3(void)

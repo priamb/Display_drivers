@@ -8,7 +8,9 @@
 #ifndef INCLUDE_SCI_H_
 #define INCLUDE_SCI_H_
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // ----------- Include other modules (for public) -------------
 
@@ -110,6 +112,8 @@ void SCI_demo_echo_with_interrupts(void);
 
 
     // DOPOLNI s prototipi funkcij
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INCLUDE_SCI_H_ */

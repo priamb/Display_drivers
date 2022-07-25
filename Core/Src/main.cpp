@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.c
+  * @file           : main.cpp
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -17,16 +17,14 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
-
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
+#include <main.hpp>
 #include "LED.h"
 #include "kbd.h"
 #include "SCI.h"
 #include "periodic_services.h"
 #include "timing_utils.h"
 #include "lcd.h"
+#include "screens/screen1.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,7 +93,7 @@ int main(void)
 
   /* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
+  /* Initialise all configured peripherals */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   MX_TIM6_Init();
@@ -111,9 +109,12 @@ int main(void)
   LCD_Init();
   LCD_uGUI_init();
 
-  //LCD_BKLT_demo();
-  //LCD_demo_simple();
-  LCD_uGUI_demo_Misko3();
+  // LCD_BKLT_demo();
+  // LCD_demo_simple();
+  // LCD_uGUI_demo_Misko3();
+  // LCD_ShowRectangle();
+  Screen1 screen1 = Screen1();
+  screen1.show();
 
   /* USER CODE END 2 */
 

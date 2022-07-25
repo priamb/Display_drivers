@@ -6,6 +6,9 @@
 #ifndef XPT2046_TOUCH_H_
 #define XPT2046_TOUCH_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // Vključi se podpora za delo z logičnimi ("boolean") vrednostmi.
 #include <stdbool.h>
@@ -87,7 +90,9 @@ bool XPT2046_touch_get_coordinates_if_pressed(uint16_t* x, uint16_t* y);
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* XPT2046_TOUCH_H_ */
 

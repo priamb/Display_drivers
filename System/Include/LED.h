@@ -8,8 +8,9 @@
 #ifndef INCLUDE_LED_H_
 #define INCLUDE_LED_H_
 
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // ----------- Include other modules (for public) -------------
 
@@ -25,12 +26,7 @@
 //		- uint32_t LL_GPIO_IsOutputPinSet(GPIO_TypeDef *GPIOx, uint32_t PinMask)
 
 
-
-
-
 // -------------------- Public definitions --------------------
-
-
 
 // Tukaj definiramo naštevni tip, s katerim dosežemo predvsem dvoje stvari:
 //
@@ -82,6 +78,8 @@ uint8_t LEDs_read(void);
 void LED_demo(void);
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INCLUDE_LED_H_ */

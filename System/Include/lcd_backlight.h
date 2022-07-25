@@ -8,7 +8,9 @@
 #ifndef INCLUDE_LCD_BACKLIGHT_H_
 #define INCLUDE_LCD_BACKLIGHT_H_
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 // ----------- Include other modules (for public) -------------
@@ -48,7 +50,9 @@ void LCD_BKLT_demo(void);
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* INCLUDE_LCD_BACKLIGHT_H_ */
