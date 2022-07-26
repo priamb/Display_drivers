@@ -18,7 +18,6 @@
 #include "SCI.h"
 #include <stdio.h>
 
-
 // ------------------- Privatna globalna spremenljivka ----------------------
 
 // Definiramo "handle" strukturo za delo z uGUI knjižnico. Kasneje v sklopu
@@ -298,9 +297,8 @@ void LCD_uGUI_demo_Misko3(void)
 //	// poizvedovanjem o lokaciji pritiska.
 //	HAL_Delay(30);
 //}
-
-bool pressed = false;
-uint16_t x = 0, y = 0;
+uint16_t x,y;
+bool pressed;
 void LCD_TCH_demo(void)
 {
 	// Poskusimo prebrati koordinate pritiska. Branje bo uspešno le,
@@ -315,6 +313,7 @@ void LCD_TCH_demo(void)
 		pressed = false;
 		// in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
 		UG_FillCircle(x,y, 10, C_RED);
+		//checkAllButtonsPressed(current_screen, x,y);
 	}
 
 	if (pressed) {

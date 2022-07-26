@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "timing_utils.h": "c",
+        "screen1.h": "c",
+        "button.h": "c"
+    }
+}

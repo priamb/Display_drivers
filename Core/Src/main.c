@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.cpp
+  * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -17,14 +17,13 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <main.hpp>
+#include <main.h>
 #include "LED.h"
 #include "kbd.h"
 #include "SCI.h"
 #include "periodic_services.h"
 #include "timing_utils.h"
 #include "lcd.h"
-#include "screens/screen1.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -113,8 +112,7 @@ int main(void)
   // LCD_demo_simple();
   // LCD_uGUI_demo_Misko3();
   // LCD_ShowRectangle();
-  Screen1 screen1 = Screen1();
-  screen1.show();
+  current_screen = getScreen(0);
 
   /* USER CODE END 2 */
 
@@ -122,9 +120,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  LCD_TCH_demo();
     /* USER CODE END WHILE */
-
+    showScreen(current_screen);
+    checkPressed(current_screen);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
