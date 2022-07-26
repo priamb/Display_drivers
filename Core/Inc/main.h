@@ -64,7 +64,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-struct Screen current_screen;
+extern struct Screen current_screen;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

@@ -46,7 +46,7 @@
 SRAM_HandleTypeDef hsram1;
 
 /* USER CODE BEGIN PV */
-
+struct Screen current_screen;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

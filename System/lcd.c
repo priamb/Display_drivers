@@ -297,34 +297,32 @@ void LCD_uGUI_demo_Misko3(void)
 //	// poizvedovanjem o lokaciji pritiska.
 //	HAL_Delay(30);
 //}
-uint16_t x,y;
-bool pressed;
 void LCD_TCH_demo(void)
 {
 	// Poskusimo prebrati koordinate pritiska. Branje bo uspešno le,
 	// če je trenutno prisoten pritisk na zaslon.
-	bool screenTouched = XPT2046_touch_get_coordinates_if_pressed(&x, &y);
-	if (screenTouched && !pressed )
-	{
-		pressed = true;
-	}
+	// bool screenTouched = XPT2046_touch_get_coordinates_if_pressed(&x, &y);
+	// if (screenTouched && !pressed )
+	// {
+	// 	pressed = true;
+	// }
 
-	if (!screenTouched && pressed){
-		pressed = false;
-		// in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
-		UG_FillCircle(x,y, 10, C_RED);
-		//checkAllButtonsPressed(current_screen, x,y);
-	}
+	// if (!screenTouched && pressed){
+	// 	pressed = false;
+	// 	// in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
+	// 	UG_FillCircle(x,y, 10, C_RED);
+	// 	//checkAllButtonsPressed(current_screen, x,y);
+	// }
 
-	if (pressed) {
-		// in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
-		UG_FillCircle(x,y, 2, C_GREEN);
+	// if (pressed) {
+	// 	// in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
+	// 	UG_FillCircle(x,y, 2, C_GREEN);
 
-		// Izpišemo lokacijo še preko SCI vmesnika.
-		printf("x = %d\n", x);
-		printf("y = %d\n", y);
-		//pressed = false;
-	}
+	// 	// Izpišemo lokacijo še preko SCI vmesnika.
+	// 	printf("x = %d\n", x);
+	// 	printf("y = %d\n", y);
+	// 	//pressed = false;
+	// }
 
 	// Dodamo nekoliko časovne zakasnitve pred morebitnim naslednjim
 	// poizvedovanjem o lokaciji pritiska.
