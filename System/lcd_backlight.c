@@ -41,6 +41,7 @@ ki je uporabljen za generiranje PWM signala.
 
 #include "lcd_backlight.h"		// lastne definicije modula
 #include "SCI.h"				// za demonstracijo
+#include <stdio.h>
 
 // ---------------------- Private definitions ------------------
 

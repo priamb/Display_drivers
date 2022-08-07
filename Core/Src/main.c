@@ -24,6 +24,10 @@
 #include "periodic_services.h"
 #include "timing_utils.h"
 #include "lcd.h"
+#include "menu.h"
+#include "button.h"
+#include "slider.h"
+#include "text.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +50,7 @@
 SRAM_HandleTypeDef hsram1;
 
 /* USER CODE BEGIN PV */
-struct Screen current_screen;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -107,22 +111,18 @@ int main(void)
   PSERV_enable();
   LCD_Init();
   LCD_uGUI_init();
-
-  // LCD_BKLT_demo();
-  // LCD_demo_simple();
-  // LCD_uGUI_demo_Misko3();
-  // LCD_ShowRectangle();
-  current_screen = getScreen(0);
-
+  textInit();
+  buttonInit();
+  sliderInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  menu();
     /* USER CODE END WHILE */
-    showScreen(current_screen);
-    checkPressed(current_screen);
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

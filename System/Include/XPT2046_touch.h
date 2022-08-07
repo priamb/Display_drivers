@@ -47,7 +47,7 @@ extern "C" {
 // Specificirati je potrebno število meritev za izračun
 // povprečne vrednosti meritve lokacije.Tako se
 // bo iz meritev lokacije pritiska na zaslon odstranil šum.
-#define XPT2046_AVERAGING_LENGTH			4
+#define XPT2046_AVERAGING_LENGTH			16
 
 
 

@@ -3,18 +3,15 @@
 #define SCREEN_H_
 
 #include <stdio.h>
-#include "../gui/button.h"
-#include "../gui/text.h"
+#include "button.h"
+#include "text.h"
+#include "slider.h"
 
-struct Screen
-{
-    struct Button *btns[4];
-    struct Text *text;
-};
-
-struct Screen getScreen(int id);
-void showScreen(struct Screen screen);
-int checkAllButtonsPressed(struct Screen screen, int x, int y);
-void checkPressed(struct Screen screen);
+void drawScreen(int id);
+int checkPressed(int id);
+int checkAllButtonsPressed(int id, int x, int y);
+int checkButtonPressed(button_t button, int x, int y);
+int checkSlider(slider_t slider, int x, int y);
+int checkAllSliders(int id, int x, int y);
 
 #endif
