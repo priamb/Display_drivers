@@ -443,44 +443,6 @@ void LED_demo(void)
 	for (LEDs_enum_t i = LED0; i < NUM_OF_LEDS; i++) {
         LED_set(i, 1);
     }
-	HAL_Delay(DELAY);
-	for (LEDs_enum_t i = LED0; i < NUM_OF_LEDS; i++) {
-        LED_set(i, 0);
-    }
-	HAL_Delay(DELAY);
-
-	// LEDs_on() demo
-	LEDs_on(0xAA);
-	HAL_Delay(DELAY);
-	LEDs_on(0xFF);
-	HAL_Delay(DELAY);
-
-	// LEDs_off() demo
-    LEDs_off(0xAA);
-    HAL_Delay(DELAY);
-    LEDs_off(0xFF);
-    HAL_Delay(DELAY);
-
-    // LEDs_write() demo
-    for (int i = 0; i < 4; i++) {
-        LEDs_write(0xAA);
-        HAL_Delay(DELAY);
-        LEDs_write(0x55);
-        HAL_Delay(DELAY);
-    }
-    LEDs_write(0x0A);
-    HAL_Delay(DELAY);
-
-    // LED_is_on() demo
-    LED_set(LED7, LED_is_on(LED0));
-    LED_set(LED6, LED_is_on(LED1));
-    LED_set(LED5, LED_is_on(LED2));
-    LED_set(LED4, LED_is_on(LED3));
-    HAL_Delay(DELAY);
-
-    // LED_read() demo
-    LEDs_write(~LEDs_read());
-    HAL_Delay(DELAY);
 
     return;
 

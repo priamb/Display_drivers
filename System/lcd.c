@@ -326,5 +326,5 @@ void LCD_TCH_demo(void)
 
 	// Dodamo nekoliko časovne zakasnitve pred morebitnim naslednjim
 	// poizvedovanjem o lokaciji pritiska.
-	HAL_Delay(50);
+	HAL_Delay(30);
 }

@@ -17,7 +17,7 @@ int checkPressed(int id)
 
     if (!screenTouched && pressed)
     {
-        pressed = true;
+        pressed = false;
         UG_FillCircle(x, y, 5, C_RED);
         checkAllSliders(id, x, y);
         return checkAllButtonsPressed(id, x, y);
@@ -26,13 +26,14 @@ int checkPressed(int id)
     if (pressed)
     {
         // in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
-        UG_FillCircle(x, y, 2, C_GREEN);
+        //UG_FillCircle(x, y, 2, C_GREEN);
 
         // Izpišemo lokacijo še preko SCI vmesnika.
         //printf("x = %d\n", x);
         //printf("y = %d\n", y);
         pressed = true;
     }
+    HAL_Delay(30);
     return false;
 	}
 
@@ -119,7 +120,6 @@ int checkAllButtonsPressed(int id, int x, int y)
     	    if (checkButtonPressed(button_OK, x, y)) {
     	    	return button_OK.action;
     	    }
-
     	    return 0;
 
     	   	break;
