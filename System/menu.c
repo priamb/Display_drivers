@@ -1,10 +1,12 @@
 #include "screen.h"
-
+#include "slider.h"
 
 int current_screen = 1; // TRENUTEN ZASLON
 int new_screen = 0;  // NOV ZASLON
 int previous_screen = 0; // PREJŠNJI ZASLON
 
+extern int32_t temperature;
+extern slider_t slider;
 
 void menu(void)
 {
@@ -42,21 +44,27 @@ void menu(void)
 				return;
 			}
 			if (action == 5) { // TIPKA 180°C
+				temperature = 180;
 				new_screen = 4;
 			}
 			if (action == 6) { // TIPKA 190°C
+				temperature = 190;
 				new_screen = 4;
 			}
 			if (action == 7) { // TIPKA 200°C
+				temperature = 200;
 				new_screen = 4;
 			}
 			if (action == 8) { // TIPKA 210°C
+				temperature = 210;
 				new_screen = 4;
 			}
 			if (action == 9) { // TIPKA 220°C
+				temperature = 220;
 				new_screen = 4;
 			}
 			if (action == 10) { // TIPKA 230°C
+				temperature = 230;
 				new_screen = 4;
 			}
 			break;
@@ -66,6 +74,7 @@ void menu(void)
 				return;
 			}
 			if (action == 3) { //TIPKA OK
+				temperature = slider.value;
 				new_screen = 4;
 			}
 			if (action == 4) { //TIPKA BACK

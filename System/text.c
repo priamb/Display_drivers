@@ -10,6 +10,7 @@ text_t text_NAVODILA3;
 text_t text_NAVODILA4;
 text_t text_NAVODILA5;
 text_t text_NAVODILA6;
+text_t text_TEMPERATURA;
 
 void textInit(void)
 {

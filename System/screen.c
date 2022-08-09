@@ -4,6 +4,8 @@
 #include "button.h"
 #include "slider.h"
 
+int32_t temperature;
+
 bool pressed = false;
 short x = 0, y = 0;
 
@@ -37,15 +39,15 @@ int checkPressed(int id)
     return false;
 	}
 
-int checkSlider(slider_t slider, int x, int y){
-    float new_val = checkIfValueChanged(slider, x, y);
+int checkSlider(slider_t *slider, int x, int y){
+    float new_val = checkIfValueChanged(*slider, x, y);
 
     if (new_val >= 0.0){
-            slider.value = new_val;
+            slider->value = new_val;
             char str[80];
-            snprintf(str, 80, "%d\n", (int)slider.value);
+            snprintf(str, 80, "%d\n", (int)slider->value);
             SCI_send_string(str);
-            showSlider(slider);
+            showSlider(*slider);
             return 1;
     }
 
@@ -55,7 +57,7 @@ int checkSlider(slider_t slider, int x, int y){
 int checkAllSliders(int id, int x, int y) {
 	switch (id) {
 		case 3:
-			checkSlider(slider, x, y);
+			checkSlider(&slider, x, y);
 			return 1;
 			break;
 
@@ -189,7 +191,6 @@ void drawScreen(int id)
     	showText(text_NAVODILA6);
     	showButton(button_BACK);
     	showButton(button_OK);
-    	//showDesignatedTemperature
     	showSlider(slider);
         break;
 
@@ -197,6 +198,13 @@ void drawScreen(int id)
     	showButton(button_BACK);
     	showButton(button_OK);
     	showText(text_NAVODILA1);
+
+    	char str[80];
+    	snprintf(str, 80, "[%ld%cC]", temperature, 0xF8);
+        UG_SetForecolor(0xFFFF);
+        UG_SetBackcolor(0x0000);
+        UG_PutString(130, 100, str);
+
         break;
 
     case 5:
