@@ -22,8 +22,13 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g4xx_hal.h"
+
 #include "stm32g4xx_ll_tim.h"
 #include "stm32g4xx_ll_usart.h"
 #include "stm32g4xx_ll_rcc.h"
@@ -67,5 +72,9 @@ extern struct Screen current_screen;
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __MAIN_H */
