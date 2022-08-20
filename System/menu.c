@@ -91,23 +91,31 @@ void menu(void)
 			}
 			if (action == 4) {  // TIPKA BACK
 				new_screen = previous_screen;
+
 			}
 			break;
 
 		case 5: // ZASLON ZA OBVEŠČANJE PREDGRETJA
 			if (action == 0) {
-				HAL_Delay(5000);
+				return;
+			}
+
+			if (temperature <= (long)get_temperature() ) {
 				new_screen = 6;
 			}
-			//če je temperatura enaka designatedTemperature me da na zaslon 6
+
 			break;
 
 		case 6: // ZASLON ZA OBVEŠČANJE SPAJKANJA
 			if (action == 0) {
-				HAL_Delay(5000);
+				return;
+			}
+
+			if (temperature <= (long)get_temperature() ) {
+				HAL_Delay(10000);
 				new_screen = 7;
 			}
-			//ko temperatura doseže designatedTemperature počakaj 15s nato na zaslon 7
+
 			break;
 
 		case 7: // ZASLON ZA OBVEŠČANJE KONČANEGA SPAJKANJA
@@ -122,10 +130,12 @@ void menu(void)
 
 		case 8: // ZASLON ZA OBVEŠČANJE KONČANEGA SPAJKANJA
 			if (action == 0) {
-				HAL_Delay(5000);
-				new_screen = 1;
+				return;
 			}
-			//when bed temperature enaka 150°C vrne na zaslon 1
+
+			if ((long)get_temperature() < 150 ) {
+				new_screen = 6;
+			}
 
 			break;
 	}

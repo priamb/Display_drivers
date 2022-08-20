@@ -3,11 +3,14 @@
 #include "text.h"
 #include "button.h"
 #include "slider.h"
+#include "temperature.h"
 
 int32_t temperature;
 
 bool pressed = false;
-short x = 0, y = 0;
+unsigned short x = 0, y = 0;
+
+char str[80];
 
 int checkPressed(int id)
 {
@@ -199,32 +202,52 @@ void drawScreen(int id)
     	showButton(button_OK);
     	showText(text_NAVODILA1);
 
-    	char str[80];
     	snprintf(str, 80, "[%ld%cC]", temperature, 0xF8);
         UG_SetForecolor(0xFFFF);
         UG_SetBackcolor(0x0000);
-        UG_PutString(130, 100, str);
+        UG_PutString(140, 100, str);
 
         break;
 
     case 5:
-    	//showTemperature
     	showText(text_NAVODILA2);
+
+    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
+        UG_SetForecolor(0xFFFF);
+        UG_SetBackcolor(0x0000);
+        UG_PutString(140, 100, str);
+
         break;
 
     case 6:
-    	//showTemperature
     	showText(text_NAVODILA3);
+
+    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
+        UG_SetForecolor(0xFFFF);
+        UG_SetBackcolor(0x0000);
+        UG_PutString(140, 100, str);
+
         break;
 
     case 7:
     	showText(text_NAVODILA4);
     	showButton(button_OK);
+
+    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
+        UG_SetForecolor(0xFFFF);
+        UG_SetBackcolor(0x0000);
+        UG_PutString(140, 100, str);
+
         break;
 
     case 8:
-    	//showTemperature
     	showText(text_NAVODILA5);
+
+    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
+        UG_SetForecolor(0xFFFF);
+        UG_SetBackcolor(0x0000);
+        UG_PutString(140, 100, str);
+
         break;
 
     }
