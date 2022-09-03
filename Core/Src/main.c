@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <PI.h>
 #include "main.h"
 #include "spi.h"
 #include "tim.h"
@@ -99,6 +100,7 @@ int main(void)
   MX_FMC_Init();
   MX_SPI1_Init();
   MX_USART2_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   LED_init();
   KBD_init();
@@ -110,7 +112,7 @@ int main(void)
   textInit();
   buttonInit();
   sliderInit();
-  get_temperature();
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -118,7 +120,6 @@ int main(void)
   while (1)
   {
 	  menu();
-	  get_temperature();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
