@@ -1,4 +1,3 @@
-
 #include "screens/screen.h"
 #include "text.h"
 #include "button.h"
@@ -23,19 +22,17 @@ int checkPressed(int id)
     if (!screenTouched && pressed)
     {
         pressed = false;
-        UG_FillCircle(x, y, 5, C_RED);
+        UG_FillCircle(x, y, 5, C_RED); //Izris rdečega krogca, ko spustimo pritisk
         checkAllSliders(id, x, y);
         return checkAllButtonsPressed(id, x, y);
     }
 
     if (pressed)
     {
-        // in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
-        //UG_FillCircle(x, y, 2, C_GREEN);
+        //UG_FillCircle(x, y, 2, C_GREEN); //Izris zelenega krogca, ko zazna pritisk
 
-        // Izpišemo lokacijo še preko SCI vmesnika.
-        //printf("x = %d\n", x);
-        //printf("y = %d\n", y);
+        //printf("x = %d\n", x); //Izpis lokacije X preko SCi vmesnika
+        //printf("y = %d\n", y); //Izpis lokacije Y preko SCI vmesnika
         pressed = true;
     }
     HAL_Delay(30);
@@ -57,7 +54,7 @@ int checkSlider(slider_t *slider, int x, int y){
     return 0;
 }
 
-int checkAllSliders(int id, int x, int y) {
+int checkAllSliders(int id, int x, int y) { //Funkcija za dodajanje dodatnih sliderjev
 	switch (id) {
 		case 3:
 			checkSlider(&slider, x, y);
@@ -212,20 +209,10 @@ void drawScreen(int id)
     case 5:
     	showText(text_NAVODILA2);
 
-    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
-        UG_SetForecolor(0xFFFF);
-        UG_SetBackcolor(0x0000);
-        UG_PutString(140, 100, str);
-
         break;
 
     case 6:
     	showText(text_NAVODILA3);
-
-    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
-        UG_SetForecolor(0xFFFF);
-        UG_SetBackcolor(0x0000);
-        UG_PutString(140, 100, str);
 
         break;
 
@@ -233,20 +220,10 @@ void drawScreen(int id)
     	showText(text_NAVODILA4);
     	showButton(button_OK);
 
-    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
-        UG_SetForecolor(0xFFFF);
-        UG_SetBackcolor(0x0000);
-        UG_PutString(140, 100, str);
-
         break;
 
     case 8:
     	showText(text_NAVODILA5);
-
-    	snprintf(str, 80, "[%ld%cC]", (long)get_temperature(), 0xF8);
-        UG_SetForecolor(0xFFFF);
-        UG_SetBackcolor(0x0000);
-        UG_PutString(140, 100, str);
 
         break;
 

@@ -1,5 +1,8 @@
+#include "PI.h"
 #include "screen.h"
 #include "slider.h"
+#include "temperature.h"
+#include "izhod.h"
 
 int current_screen = 1; // TRENUTEN ZASLON
 int new_screen = 0;  // NOV ZASLON
@@ -10,7 +13,7 @@ extern slider_t slider;
 
 void menu(void)
 {
-	if (current_screen != new_screen) {
+	if (current_screen != new_screen) { // if stavek za vračilo na prejšni zaslon
 		previous_screen = current_screen;
 		current_screen = new_screen;
 		drawScreen(current_screen);
@@ -96,29 +99,60 @@ void menu(void)
 			break;
 
 		case 5: // ZASLON ZA OBVEŠČANJE PREDGRETJA
+			update_temperature();
+
+			int temp_predgretje = 100; //nastavitev temperature za predgretje
+			static bool sample_predgretje = 0;
+			static int tickstart_predgretje;
+
+			izhod(PI(temp_predgretje, get_current_temperature())); //ob vsakem ciklu zračuna vrednost napake in prilagodi PWM
+
+			if(sample_predgretje == 0){
+					sample_predgretje = 1;
+					tickstart_predgretje = HAL_GetTick();
+				}
+
+				if(tickstart_predgretje + 90000 < HAL_GetTick()){
+					sample_predgretje = 0;
+					new_screen = 6;
+
+				}
+
 			if (action == 0) {
 				return;
-			}
-
-			if (temperature <= (long)get_temperature() ) {
-				new_screen = 6;
 			}
 
 			break;
 
 		case 6: // ZASLON ZA OBVEŠČANJE SPAJKANJA
-			if (action == 0) {
-				return;
+			update_temperature();
+			izhod (PI(temperature, get_current_temperature())); //ob vsakem ciklu zračuna vrednost napake in prilagodi PWM
+
+			static bool sample_spajkanje = 0;
+			static int tickstart_spajkanje;
+
+			if(temperature - 5 <= get_current_temperature() && temperature + 5 >= get_current_temperature()){ //začne šteti čas spajkanja ko trenutna temperatura doseže +- 5 stopinj željene temperature
+				if(sample_spajkanje == 0){
+					sample_spajkanje = 1;
+					tickstart_spajkanje = HAL_GetTick();
+				}
+
+				if(tickstart_spajkanje + 7000 < HAL_GetTick()){
+					sample_spajkanje = 0;
+					izhod (0);
+					new_screen = 7;
+
+				}
 			}
 
-			if (temperature <= (long)get_temperature() ) {
-				HAL_Delay(10000);
-				new_screen = 7;
+			if (action == 0) {
+				return;
 			}
 
 			break;
 
 		case 7: // ZASLON ZA OBVEŠČANJE KONČANEGA SPAJKANJA
+			update_temperature();
 			if (action == 0) {
 				return;
 			}
@@ -128,14 +162,17 @@ void menu(void)
 
 			break;
 
-		case 8: // ZASLON ZA OBVEŠČANJE KONČANEGA SPAJKANJA
+		case 8: // ZASLON ZA OBVEŠČANJE HLAJENJA
+			update_temperature();
+
+			if ((long)get_current_temperature() < 60 ) {
+				new_screen = 1;
+			}
+
 			if (action == 0) {
 				return;
 			}
 
-			if ((long)get_temperature() < 150 ) {
-				new_screen = 6;
-			}
 
 			break;
 	}

@@ -30,7 +30,6 @@ void PSERV_init(void);
 void PSERV_enable(void);
 void PSERV_disable(void);
 void PSERV_run_services_Callback(void);
-void KBD_demo_toggle_LEDs_if_buttons_pressed(void);
 
 
 #ifdef __cplusplus
