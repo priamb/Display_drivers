@@ -1,13 +1,15 @@
-
 #include "screens/screen.h"
 #include "text.h"
 #include "button.h"
 #include "slider.h"
+#include "temperature.h"
 
 int32_t temperature;
 
 bool pressed = false;
-short x = 0, y = 0;
+unsigned short x = 0, y = 0;
+
+char str[80];
 
 int checkPressed(int id)
 {
@@ -20,19 +22,17 @@ int checkPressed(int id)
     if (!screenTouched && pressed)
     {
         pressed = false;
-        UG_FillCircle(x, y, 5, C_RED);
+        UG_FillCircle(x, y, 5, C_RED); //Izris rdečega krogca, ko spustimo pritisk
         checkAllSliders(id, x, y);
         return checkAllButtonsPressed(id, x, y);
     }
 
     if (pressed)
     {
-        // in na to mesto pritiska narišemo krogec s pomočjo uGUI funkcij.
-        //UG_FillCircle(x, y, 2, C_GREEN);
+        //UG_FillCircle(x, y, 2, C_GREEN); //Izris zelenega krogca, ko zazna pritisk
 
-        // Izpišemo lokacijo še preko SCI vmesnika.
-        //printf("x = %d\n", x);
-        //printf("y = %d\n", y);
+        //printf("x = %d\n", x); //Izpis lokacije X preko SCi vmesnika
+        //printf("y = %d\n", y); //Izpis lokacije Y preko SCI vmesnika
         pressed = true;
     }
     HAL_Delay(30);
@@ -54,7 +54,7 @@ int checkSlider(slider_t *slider, int x, int y){
     return 0;
 }
 
-int checkAllSliders(int id, int x, int y) {
+int checkAllSliders(int id, int x, int y) { //Funkcija za dodajanje dodatnih sliderjev
 	switch (id) {
 		case 3:
 			checkSlider(&slider, x, y);
@@ -199,32 +199,32 @@ void drawScreen(int id)
     	showButton(button_OK);
     	showText(text_NAVODILA1);
 
-    	char str[80];
     	snprintf(str, 80, "[%ld%cC]", temperature, 0xF8);
         UG_SetForecolor(0xFFFF);
         UG_SetBackcolor(0x0000);
-        UG_PutString(130, 100, str);
+        UG_PutString(140, 100, str);
 
         break;
 
     case 5:
-    	//showTemperature
     	showText(text_NAVODILA2);
+
         break;
 
     case 6:
-    	//showTemperature
     	showText(text_NAVODILA3);
+
         break;
 
     case 7:
     	showText(text_NAVODILA4);
     	showButton(button_OK);
+
         break;
 
     case 8:
-    	//showTemperature
     	showText(text_NAVODILA5);
+
         break;
 
     }

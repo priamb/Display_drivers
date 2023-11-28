@@ -20,18 +20,15 @@ void showSlider(slider_t slider){
     UG_SetBackcolor(0x0000);
     char str[80];
     snprintf(str, 80, "%d", (int)slider.value);
-    UG_PutString(155, 90, str);
+    UG_PutString(155, 90, str); //Izpisuje toliko časa dokler ne naleti na NULL terminator
 }
 
 float checkIfValueChanged(slider_t slider, int x, int y){
-    if (x >= slider.x && x <= slider.x+slider.w && y >= slider.y && y <= slider.y+slider.h){
-        // get the inner coordinates of the slider
-        int innerX = x - slider.x;
-        // get the percentage of the slider
-        float percentage = (float)innerX / (float)slider.w;
-        // get the value of the slider
-        int value = (int)(percentage * slider.max);
-        // return the value of the slider
+    if (x >= slider.x && x <= slider.x+slider.w && y >= slider.y && y <= slider.y+slider.h){ //Koordinate sliderja
+        int innerX = x - slider.x; //Procentualno razmerje sliderja
+        float percentage = (float)innerX / (float)slider.w; //Vrednost sliderja
+        int value = (int)(percentage * slider.max); //Vrne vrednost sliderja
+
         char str[80];
         snprintf(str, 80, "%d - ", (int)value);
         SCI_send_string(str);
@@ -39,6 +36,8 @@ float checkIfValueChanged(slider_t slider, int x, int y){
     }
     return -1.0;
 }
+
+
 
 
 

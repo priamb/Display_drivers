@@ -50,7 +50,7 @@ void textInit(void)
 	text_NAVODILA3.x = 70;
 	text_NAVODILA3.y = 70;
 
-	text_NAVODILA4.text = "Soldering complet, remove PCB";
+	text_NAVODILA4.text = "Soldering completed, remove PCB";
 	text_NAVODILA4.background = 0x0000;
 	text_NAVODILA4.foreground = 0xFFFF;
 	text_NAVODILA4.x = 40;
